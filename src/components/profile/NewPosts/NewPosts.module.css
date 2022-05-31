@@ -1,0 +1,14 @@
+.newPosts {
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 15px;
+
+  border-radius: 10px;
+  background: rgba(108, 108, 108, 0.1);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.211);
+}
+
+.newPosts h1 {
+  margin: 0 0 10px 0;
+  font-weight: normal;
+}

@@ -1,0 +1,46 @@
+.mainContent {
+  display: block;
+
+  grid-area: main;
+}
+
+.mainThemeImg {
+  display: block;
+  width: 100%;
+  height: 150px;
+  /* margin-bottom: 20px; */
+  border-radius: 10px 10px 0 0;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.177);
+}
+
+.profileInfo {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  margin-bottom: 15px;
+
+  border-radius: 0 0 10px 10px;
+  background: rgba(108, 108, 108, 0.1);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.211);
+}
+
+.avatar {
+  display: block;
+  width: 100px;
+  height: 100px;
+
+  margin-right: 20px;
+
+  border-radius: 10px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.416);
+}
+
+.profileAbout h1 {
+  margin: 0 0 10px 0;
+  font-weight: normal;
+}
+
+.profileAbout p {
+  margin: 0;
+  font-weight: normal;
+}

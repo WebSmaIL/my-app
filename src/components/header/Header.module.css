@@ -1,0 +1,14 @@
+.header {
+    display: block;
+    padding: 5px;
+  
+    grid-area: header;
+    background: #15ce69;
+}
+
+.logo {
+    display: block;
+    max-width: 50px;
+    max-height: 50px;
+    border-radius: 50%;
+}  

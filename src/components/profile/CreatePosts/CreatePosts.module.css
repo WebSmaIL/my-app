@@ -1,0 +1,48 @@
+.myPosts {
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 15px;
+
+  border-radius: 10px;
+  background: rgba(108, 108, 108, 0.1);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.211);
+}
+
+.myPosts h1 {
+  margin: 0 0 10px 0;
+  font-weight: normal;
+}
+
+.myPosts textarea {
+  display: block;
+  width: 100%;
+  height: 50px;
+  padding: 10px;
+  margin-bottom: 10px;
+
+  font-size: 15px;
+  border: none;
+  outline: none;
+  background: rgba(162, 161, 161, 0.2);
+  resize: none;
+}
+
+.myPosts button {
+  display: block;
+  width: 70px;
+  padding: 10px;
+
+  border: none;
+  cursor: pointer;
+  outline: none;
+  background: rgb(46, 164, 237);
+
+  font-size: 15px;
+  color: #fff;
+
+  transition: all 0.2s ease;
+}
+
+.myPosts button:hover {
+  background: rgb(37, 132, 192);
+}
