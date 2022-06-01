@@ -1,10 +1,11 @@
+import React  from 'react';
 import MyPosts from "./CreatePosts/CreatePosts";
 import NewPosts from "./NewPosts/NewPosts";
 import s from "./Profile.module.css";
 
 const Profile = () => {
   return (
-    <main className={s.mainContent}>
+    <main>
       <div>
         <img
           className={s.mainThemeImg}
