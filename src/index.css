@@ -17,3 +17,12 @@ code {
 *::before {
   box-sizing: border-box;
 }
+
+a {
+  color: #000;
+  text-decoration: none;
+}
+
+a.active {
+ text-decoration: underline;
+}

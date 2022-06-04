@@ -6,26 +6,24 @@
   grid-area: nav;
 }
 
-.navLink {
+.nav a {
   display: block;
   width: 100%;
   padding: 5px;
   margin-bottom: 10px;
   border-radius: 5px;
 
-  text-decoration: none;
   font-size: 24px;
-  color: #000;
 
   transition: all .2s ease;
 }
 
-.navLink:last-child {
+.nav a:last-child {
   margin-bottom: 0;
   margin-top: 40px;
 }
 
-.navLink:hover {
+.nav a:hover {
   background: rgba(0, 0, 0, 0.632);
   color: #fff;
 }

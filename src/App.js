@@ -6,21 +6,27 @@ import Header from "./components/header/Header";
 import Profile from "./components/profile/Profile";
 import Nav from "./components/navbar/Nav";
 import Dialogs from "./components/dialogs/Dialogs";
+import News from "./components/news/News";
+import Music from "./components/music/Music";
+import Settings from "./components/settings/Settings";
 
 const App = () => {
   return (
+    <BrowserRouter>
     <div className="wrapper">
       <Header />
       <Nav />
       <div className="wrapperContent">
-        <BrowserRouter>
           <Routes>
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/dialogs" element={<Dialogs />} />
+            <Route path="/" element={<Profile/>}/>
+            <Route path="/dialogs" element={<Dialogs/>}/>
+            <Route path="/news" element={<News/>}/>
+            <Route path="/music" element={<Music/>}/>
+            <Route path="/settings" element={<Settings/>}/>
           </Routes>
-        </BrowserRouter>
       </div>
     </div>
+    </BrowserRouter>
   );
 };
 
