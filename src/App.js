@@ -1,13 +1,13 @@
 // import logo from "./logo.svg";
-import "./App.css";
 import React from "react";
-import { Route, BrowserRouter, Routes } from "react-router-dom";
-import Header from "./components/header/Header";
-import Profile from "./components/profile/Profile";
-import Nav from "./components/navbar/Nav";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import "./App.css";
 import Dialogs from "./components/dialogs/Dialogs";
-import News from "./components/news/News";
+import Header from "./components/header/Header";
 import Music from "./components/music/Music";
+import Nav from "./components/navbar/Nav";
+import News from "./components/news/News";
+import Profile from "./components/profile/Profile";
 import Settings from "./components/settings/Settings";
 
 const App = () => {
