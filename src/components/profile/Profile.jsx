@@ -4,7 +4,7 @@ import NewPosts from "./NewPosts/NewPosts";
 import s from "./Profile.module.css";
 import ProfileInfo from './profileInfo/profileInfo';
 
-const Profile = () => {
+const Profile = (props) => {
   return (
     <main>
       <div>
@@ -17,11 +17,9 @@ const Profile = () => {
         <ProfileInfo/>
       </div>
 
-      {/* My posts */}
       <MyPosts />
 
-      {/* New posts */}
-      <NewPosts />
+      <NewPosts postsData = {props.postsData}/>
     </main>
   );
 };
