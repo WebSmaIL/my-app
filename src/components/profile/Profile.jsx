@@ -19,7 +19,7 @@ const Profile = (props) => {
 
       <MyPosts />
 
-      <NewPosts postsData = {props.postsData}/>
+      <NewPosts postsData = {props.state.postsData}/>
     </main>
   );
 };

@@ -11,26 +11,33 @@ import Profile from "./components/profile/Profile";
 import Settings from "./components/settings/Settings";
 
 const App = (props) => {
-  return (
-    <BrowserRouter>
-    <div className="wrapper">
-      <Header />
-      <Nav />
-      <div className="wrapperContent">
-          <Routes>
-            <Route path="/" element={<Profile postsData = {props.postsData}/>}/>
-            <Route path="/dialogs/*" element={<Dialogs
-                                                 messagesData = {props.messagesData}
-                                                 dialogsData = {props.dialogsData}
-                                              />}/>
-            <Route path="/news/*" element={<News/>}/>
-            <Route path="/music/*" element={<Music/>}/>
-            <Route path="/settings/*" element={<Settings/>}/>
-          </Routes>
-      </div>
-    </div>
-    </BrowserRouter>
-  );
+    return (
+        <BrowserRouter>
+            <div className="wrapper">
+                <Header />
+                <Nav />
+                <div className="wrapperContent">
+                    <Routes>
+                        <Route
+                            path="/"
+                            element={
+                                <Profile
+                                    state={props.appState.profile}
+                                />
+                            }
+                        />
+                        <Route
+                            path="/dialogs/*"
+                            element={<Dialogs state={props.appState.dialogs} />}
+                        />
+                        <Route path="/news/*" element={<News />} />
+                        <Route path="/music/*" element={<Music />} />
+                        <Route path="/settings/*" element={<Settings />} />
+                    </Routes>
+                </div>
+            </div>
+        </BrowserRouter>
+    );
 };
 
 export default App;
