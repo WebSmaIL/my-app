@@ -2,6 +2,7 @@ import {renderEntireTree} from "../render";
 
 let state = {
     profile : {
+        newPostText : "",
         postsData : [
             {
                 id: "1",
@@ -49,16 +50,34 @@ let state = {
     },
 }
 
-export let addPost = (postText) => {
+export let addPost = () => {
     let newPost = {
         id : 5,
-        message: postText,
-        avatarURL: "https://uprostim.com/wp-content/uploads/2021/03/image204-9.jpg",
+        message: state.profile.newPostText,
+        avatarURL: "https://a.d-cd.net/1a424f2s-960.jpg",
         likeCount: "0",
     };
 
     state.profile.postsData.push(newPost);
-    renderEntireTree(state, addPost);
+    state.profile.newPostText = '';
+    renderEntireTree(state, addPost, addMessage, changePost);
+}
+
+export let addMessage = (messText) => {
+    let newMessage = {
+        id: 3,
+        message: messText 
+    }
+
+    state.dialogs.messagesData.push(newMessage);
+    renderEntireTree(state, addPost, addMessage, changePost);
+}
+
+export let changePost = (postText) => {
+
+    state.profile.newPostText = postText;
+
+    renderEntireTree(state, addPost, addMessage, changePost);
 }
 
 export default state;

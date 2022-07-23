@@ -2,12 +2,11 @@ import React from "react";
 import s from "./MessageInput.module.css";
 
 const MessageInput = (props) => {
-
   let messageArea = React.createRef();
 
-  let addMessage = () => {
+  let addMes = () => {
     let message = messageArea.current.value;
-    alert('Вы добавили сообщение ' + message);
+    props.addMessage(message);
   };
 
   return (
@@ -18,7 +17,7 @@ const MessageInput = (props) => {
         className={s.messageInput}
         placeholder="Enter the message..."
       />
-      <button onClick={ addMessage } className={s.inputBtn}>send</button>
+      <button onClick={ addMes } className={s.inputBtn}>send</button>
     </div>
   );
 };
