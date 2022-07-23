@@ -1,3 +1,5 @@
+import {renderEntireTree} from "../render";
+
 let state = {
     profile : {
         postsData : [
@@ -45,6 +47,18 @@ let state = {
             { id: "5", userName: "Максим" },
         ],
     },
+}
+
+export let addPost = (postText) => {
+    let newPost = {
+        id : 5,
+        message: postText,
+        avatarURL: "https://uprostim.com/wp-content/uploads/2021/03/image204-9.jpg",
+        likeCount: "0",
+    };
+
+    state.profile.postsData.push(newPost);
+    renderEntireTree(state, addPost);
 }
 
 export default state;

@@ -23,6 +23,7 @@ const App = (props) => {
                             element={
                                 <Profile
                                     state={props.appState.profile}
+                                    addPost = {props.addPost}
                                 />
                             }
                         />
