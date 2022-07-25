@@ -16,7 +16,7 @@ const Dialogs = (props) => {
 
             <div className={s.dialogWindow}>
                 <Messages messagesData = {props.state.messagesData} />
-                <MessageInput addMessage={props.addMessage} />
+                <MessageInput newMessageText={props.state.newMessageText} addMessage={props.addMessage} changeMessage={props.changeMessage} />
             </div>
         </div>
     );

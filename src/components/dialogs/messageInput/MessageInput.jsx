@@ -2,24 +2,31 @@ import React from "react";
 import s from "./MessageInput.module.css";
 
 const MessageInput = (props) => {
-  let messageArea = React.createRef();
+    let messageArea = React.createRef();
 
-  let addMes = () => {
-    let message = messageArea.current.value;
-    props.addMessage(message);
-  };
+    let addMes = () => {
+        props.addMessage();
+    };
 
-  return (
-    <div className={s.inputBlock}>
-      <textarea
-        ref={messageArea}
-        name="message"
-        className={s.messageInput}
-        placeholder="Enter the message..."
-      />
-      <button onClick={ addMes } className={s.inputBtn}>send</button>
-    </div>
-  );
+    let onMessageChange = () => {
+        props.changeMessage(messageArea.current.value);
+    };
+
+    return (
+        <div className={s.inputBlock}>
+            <textarea
+                ref={messageArea}
+                name="message"
+                className={s.messageInput}
+                placeholder="Enter the message..."
+                value={props.newMessageText}
+                onChange={onMessageChange}
+            />
+            <button onClick={addMes} className={s.inputBtn}>
+                send
+            </button>
+        </div>
+    );
 };
 
 export default MessageInput;

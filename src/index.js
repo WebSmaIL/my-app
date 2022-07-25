@@ -1,6 +1,6 @@
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
-import state, { addMessage, addPost, changePost, subscribe } from "./state/state";
+import store from "./state/state";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
@@ -13,10 +13,7 @@ export let renderEntireTree = () => {
     root.render(
         <React.StrictMode>
             <App
-                appState={state}
-                addPost = {addPost}
-                addMessage={addMessage}
-                changePost={changePost}
+                store = {store}
             />
         </React.StrictMode>
     );
@@ -24,7 +21,7 @@ export let renderEntireTree = () => {
 
 
 renderEntireTree();
-subscribe(renderEntireTree);
+store.subscribe(renderEntireTree);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

@@ -22,15 +22,21 @@ const App = (props) => {
                             path="/"
                             element={
                                 <Profile
-                                    state={props.appState.profile}
-                                    addPost = {props.addPost}
-                                    changePost={props.changePost}
+                                    state={props.store.getState().profile}
+                                    addPost={props.store.addPost.bind(props.store)}
+                                    changePost={props.store.changePost.bind(props.store)}
                                 />
                             }
                         />
                         <Route
                             path="/dialogs/*"
-                            element={<Dialogs state={props.appState.dialogs} addMessage={props.addMessage} />}
+                            element={
+                                <Dialogs
+                                    state={props.store.getState().dialogs}
+                                    addMessage={props.store.addMessage.bind(props.store)}
+                                    changeMessage={props.store.changeMessage.bind(props.store)}
+                                />
+                            }
                         />
                         <Route path="/news/*" element={<News />} />
                         <Route path="/music/*" element={<Music />} />
