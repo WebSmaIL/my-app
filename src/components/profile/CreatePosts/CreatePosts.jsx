@@ -5,11 +5,14 @@ const MyPosts = (props) => {
     let createPostArea = React.createRef();
 
     let onAddPost = () => {
-        props.addPost();
+        props.dispatch({type : 'ADD-POST'});
     };
 
     let onPostChange = () => {
-        props.changePost(createPostArea.current.value);
+        props.dispatch({
+            type : 'CHANGE-POST',
+            postText : createPostArea.current.value
+    });
     };
 
     return (

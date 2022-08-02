@@ -5,11 +5,14 @@ const MessageInput = (props) => {
     let messageArea = React.createRef();
 
     let addMes = () => {
-        props.addMessage();
+        props.dispatch({type : 'ADD-MESSAGE'});
     };
 
     let onMessageChange = () => {
-        props.changeMessage(messageArea.current.value);
+        props.changeMessage({
+            type : 'CHANGE-MESSAGE',
+            newMesText : messageArea.current.value
+        });
     };
 
     return (

@@ -23,8 +23,9 @@ const App = (props) => {
                             element={
                                 <Profile
                                     state={props.store.getState().profile}
-                                    addPost={props.store.addPost.bind(props.store)}
-                                    changePost={props.store.changePost.bind(props.store)}
+                                    dispatch = {props.store.dispatch.bind(props.store)}
+                                    // addPost={props.store.addPost.bind(props.store)}
+                                    // changePost={props.store.changePost.bind(props.store)}
                                 />
                             }
                         />
@@ -33,8 +34,9 @@ const App = (props) => {
                             element={
                                 <Dialogs
                                     state={props.store.getState().dialogs}
-                                    addMessage={props.store.addMessage.bind(props.store)}
-                                    changeMessage={props.store.changeMessage.bind(props.store)}
+                                    dispatch = {props.store.dispatch.bind(props.store)}
+                                    // addMessage={props.store.addMessage.bind(props.store)}
+                                    // changeMessage={props.store.changeMessage.bind(props.store)}
                                 />
                             }
                         />

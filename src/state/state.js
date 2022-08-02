@@ -49,48 +49,51 @@ let store = {
             ],
         },
     },
-    renderEntireTree () {
+    _callSubscriber () {
         console.log('changes completed');
     },
-    addPost (){
-        let newPost = {
-            id : 5,
-            message: this._state.profile.newPostText,
-            avatarURL: "https://a.d-cd.net/1a424f2s-960.jpg",
-            likeCount: "0",
-        };
-    
-        this._state.profile.postsData.push(newPost);
-        this._state.profile.newPostText = '';
-        this.renderEntireTree();
-    },
-    addMessage (){
-        let newMessage = {
-            id: 3,
-            message: this._state.dialogs.newMessageText 
-        }
-        this._state.dialogs.messagesData.push(newMessage);
-        this.renderEntireTree();
-    },
-    changeMessage (newMesText){
-        this._state.dialogs.newMessageText = newMesText;
-        this.renderEntireTree();
-    },
-    changePost (postText){
-        this._state.profile.newPostText = postText;
-        this.renderEntireTree();
-    },
     subscribe (observer){
-        this.renderEntireTree = observer;
+        this._callSubscriber = observer;
     },
     getState(){
         return this._state;
     },
-    getStateProfile(){
-        return this._state.profile;
-    },
-    getStateDialogs(){
-        return this._state.dialogs;
+    dispatch(action){
+        switch (action.type) {
+
+            // ADD-POST CASE
+            case 'ADD-POST':
+                let newPost = {
+                    id : 5,
+                    message: this._state.profile.newPostText,
+                    avatarURL: "https://a.d-cd.net/1a424f2s-960.jpg",
+                    likeCount: "0",
+                };
+            
+                this._state.profile.postsData.push(newPost);
+                this._state.profile.newPostText = '';
+                break;
+
+            // CHANGE-POST CASE
+            case 'CHANGE-POST':
+                this._state.profile.newPostText = action.postText;
+                break;
+
+            // ADD-MESSAGE CASE
+            case 'ADD-MESSAGE':
+                let newMessage = {
+                    id: 3,
+                    message: this._state.dialogs.newMessageText 
+                }
+                this._state.dialogs.messagesData.push(newMessage);
+                break;
+
+            // CHANGE-POST CASE
+            case 'CHANGE-MESSAGE':
+                this._state.dialogs.newMessageText = action.newMesText;
+                break;  
+        }
+        this._callSubscriber();
     }
 }
 
