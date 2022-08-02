@@ -1,18 +1,21 @@
 import React from "react";
+import { addMesActionCreator, changeMesActionCreator } from "../../../state/state";
 import s from "./MessageInput.module.css";
+
+
 
 const MessageInput = (props) => {
     let messageArea = React.createRef();
 
     let addMes = () => {
-        props.dispatch({type : 'ADD-MESSAGE'});
+        let action = addMesActionCreator();
+        props.dispatch(action);
     };
 
     let onMessageChange = () => {
-        props.changeMessage({
-            type : 'CHANGE-MESSAGE',
-            newMesText : messageArea.current.value
-        });
+        let text = messageArea.current.value;
+        let action = changeMesActionCreator(text);
+        props.dispatch(action);
     };
 
     return (

@@ -1,18 +1,18 @@
 import React from "react";
+import { addPostActionCreator, changePostActionCreator } from "../../../state/state";
 import s from "./CreatePosts.module.css";
 
 const MyPosts = (props) => {
     let createPostArea = React.createRef();
 
     let onAddPost = () => {
-        props.dispatch({type : 'ADD-POST'});
+        props.dispatch(addPostActionCreator());
     };
 
     let onPostChange = () => {
-        props.dispatch({
-            type : 'CHANGE-POST',
-            postText : createPostArea.current.value
-    });
+        let text = createPostArea.current.value;
+        let action = changePostActionCreator(text);
+        props.dispatch(action);
     };
 
     return (

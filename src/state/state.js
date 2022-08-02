@@ -1,3 +1,9 @@
+const 
+    ADD_POST = "ADD-POST",
+    CHANGE_POST = "CHANGE-POST",
+    ADD_MESSAGE = "ADD-MESSAGE",
+    CHANGE_MESSAGE = "CHANGE-MESSAGE";
+
 let store = {
     _state : {
         profile : {
@@ -62,7 +68,7 @@ let store = {
         switch (action.type) {
 
             // ADD-POST CASE
-            case 'ADD-POST':
+            case ADD_POST:
                 let newPost = {
                     id : 5,
                     message: this._state.profile.newPostText,
@@ -75,12 +81,12 @@ let store = {
                 break;
 
             // CHANGE-POST CASE
-            case 'CHANGE-POST':
+            case CHANGE_POST:
                 this._state.profile.newPostText = action.postText;
                 break;
 
             // ADD-MESSAGE CASE
-            case 'ADD-MESSAGE':
+            case ADD_MESSAGE:
                 let newMessage = {
                     id: 3,
                     message: this._state.dialogs.newMessageText 
@@ -89,7 +95,7 @@ let store = {
                 break;
 
             // CHANGE-POST CASE
-            case 'CHANGE-MESSAGE':
+            case CHANGE_MESSAGE:
                 this._state.dialogs.newMessageText = action.newMesText;
                 break;  
         }
@@ -97,6 +103,31 @@ let store = {
     }
 }
 
+export const addPostActionCreator = () => {
+    return {
+        type : ADD_POST
+    }
+};
+
+export const changePostActionCreator = (text) => {
+    return {
+        type : CHANGE_POST,
+        postText : text
+    }
+};
+
+export const addMesActionCreator = () => {
+    return {
+        type : ADD_MESSAGE
+    }
+}
+
+export const changeMesActionCreator = (text) => {
+    return {
+        type : CHANGE_MESSAGE,
+        newMesText : text
+    }
+}
 
 export default store;
 window.store = store;
