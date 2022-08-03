@@ -1,5 +1,5 @@
 import React from "react";
-import { addMesActionCreator, changeMesActionCreator } from "../../../state/state";
+import { addMesActionCreator, changeMesActionCreator } from "../../../state/dialogsReducer";
 import s from "./MessageInput.module.css";
 
 

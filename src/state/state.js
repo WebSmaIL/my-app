@@ -1,8 +1,6 @@
-const 
-    ADD_POST = "ADD-POST",
-    CHANGE_POST = "CHANGE-POST",
-    ADD_MESSAGE = "ADD-MESSAGE",
-    CHANGE_MESSAGE = "CHANGE-MESSAGE";
+import dialogsReducer from "./dialogsReducer";
+import profileReducer from "./profileReducer";
+
 
 let store = {
     _state : {
@@ -65,67 +63,9 @@ let store = {
         return this._state;
     },
     dispatch(action){
-        switch (action.type) {
-
-            // ADD-POST CASE
-            case ADD_POST:
-                let newPost = {
-                    id : 5,
-                    message: this._state.profile.newPostText,
-                    avatarURL: "https://a.d-cd.net/1a424f2s-960.jpg",
-                    likeCount: "0",
-                };
-            
-                this._state.profile.postsData.push(newPost);
-                this._state.profile.newPostText = '';
-                break;
-
-            // CHANGE-POST CASE
-            case CHANGE_POST:
-                this._state.profile.newPostText = action.postText;
-                break;
-
-            // ADD-MESSAGE CASE
-            case ADD_MESSAGE:
-                let newMessage = {
-                    id: 3,
-                    message: this._state.dialogs.newMessageText 
-                }
-                this._state.dialogs.messagesData.push(newMessage);
-                break;
-
-            // CHANGE-POST CASE
-            case CHANGE_MESSAGE:
-                this._state.dialogs.newMessageText = action.newMesText;
-                break;  
-        }
+        this._state.profile = profileReducer(this._state.profile, action);
+        this._state.dialogs = dialogsReducer(this._state.dialogs, action);
         this._callSubscriber();
-    }
-}
-
-export const addPostActionCreator = () => {
-    return {
-        type : ADD_POST
-    }
-};
-
-export const changePostActionCreator = (text) => {
-    return {
-        type : CHANGE_POST,
-        postText : text
-    }
-};
-
-export const addMesActionCreator = () => {
-    return {
-        type : ADD_MESSAGE
-    }
-}
-
-export const changeMesActionCreator = (text) => {
-    return {
-        type : CHANGE_MESSAGE,
-        newMesText : text
     }
 }
 

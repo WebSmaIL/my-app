@@ -1,5 +1,5 @@
 import React from "react";
-import { addPostActionCreator, changePostActionCreator } from "../../../state/state";
+import { addPostActionCreator, changePostActionCreator } from "../../../state/profileReducer";
 import s from "./CreatePosts.module.css";
 
 const MyPosts = (props) => {
