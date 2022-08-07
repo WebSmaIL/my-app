@@ -22,10 +22,7 @@ const App = (props) => {
                             path="/"
                             element={
                                 <Profile
-                                    state={props.store.getState().profile}
-                                    dispatch = {props.store.dispatch.bind(props.store)}
-                                    // addPost={props.store.addPost.bind(props.store)}
-                                    // changePost={props.store.changePost.bind(props.store)}
+                                    store={props.store}
                                 />
                             }
                         />
@@ -33,10 +30,9 @@ const App = (props) => {
                             path="/dialogs/*"
                             element={
                                 <Dialogs
-                                    state={props.store.getState().dialogs}
-                                    dispatch = {props.store.dispatch.bind(props.store)}
-                                    // addMessage={props.store.addMessage.bind(props.store)}
-                                    // changeMessage={props.store.changeMessage.bind(props.store)}
+                                    store={props.store}
+                                    // state={props.store.getState().dialogs}
+                                    // dispatch = {props.store.dispatch.bind(props.store)}
                                 />
                             }
                         />

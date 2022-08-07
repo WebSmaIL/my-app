@@ -25,6 +25,7 @@ const dialogsReducer = (state = initialState, action) => {
                 message: state.newMessageText 
             }
             state.messagesData.push(newMessage);
+            state.newMessageText = '';
             return state;
 
         // CHANGE-POST CASE

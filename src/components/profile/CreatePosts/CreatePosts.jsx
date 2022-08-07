@@ -1,18 +1,16 @@
 import React from "react";
-import { addPostActionCreator, changePostActionCreator } from "../../../state/profileReducer";
 import s from "./CreatePosts.module.css";
 
 const MyPosts = (props) => {
     let createPostArea = React.createRef();
 
     let onAddPost = () => {
-        props.dispatch(addPostActionCreator());
+        props.addPost()
     };
 
     let onPostChange = () => {
         let text = createPostArea.current.value;
-        let action = changePostActionCreator(text);
-        props.dispatch(action);
+        props.updateNewPostText(text)
     };
 
     return (

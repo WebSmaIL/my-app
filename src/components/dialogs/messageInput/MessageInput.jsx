@@ -1,21 +1,17 @@
 import React from "react";
-import { addMesActionCreator, changeMesActionCreator } from "../../../state/dialogsReducer";
 import s from "./MessageInput.module.css";
-
 
 
 const MessageInput = (props) => {
     let messageArea = React.createRef();
 
-    let addMes = () => {
-        let action = addMesActionCreator();
-        props.dispatch(action);
+    let onAddMessage = () => {
+        props.addMessage();
     };
 
     let onMessageChange = () => {
         let text = messageArea.current.value;
-        let action = changeMesActionCreator(text);
-        props.dispatch(action);
+        props.updateMessageText(text);
     };
 
     return (
@@ -28,7 +24,7 @@ const MessageInput = (props) => {
                 value={props.newMessageText}
                 onChange={onMessageChange}
             />
-            <button onClick={addMes} className={s.inputBtn}>
+            <button onClick={onAddMessage} className={s.inputBtn}>
                 send
             </button>
         </div>

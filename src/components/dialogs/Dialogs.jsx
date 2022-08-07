@@ -2,10 +2,13 @@ import React from "react";
 import s from "./Dialogs.module.css";
 import DialogItem from "./dialogItem/DialogItem";
 import Messages from "./Messages/Messages";
-import MessageInput from "./messageInput/MessageInput";
+import MessageInputContainer from "./messageInput/MessageInputContainer";
 
 const Dialogs = (props) => {
-    let dialogsElements = props.state.dialogsData.map((dialogItem) => (
+    let dialogsData = props.store.getState().dialogs.dialogsData;
+    let messagesData = props.store.getState().dialogs.messagesData;
+    
+    let dialogsElements = dialogsData.map((dialogItem) => (
         <DialogItem id={dialogItem.id} userName={dialogItem.userName} />
     ));
 
@@ -14,10 +17,9 @@ const Dialogs = (props) => {
             <div className={s.dialogItems}>{dialogsElements}</div>
 
             <div className={s.dialogWindow}>
-                <Messages messagesData={props.state.messagesData} />
-                <MessageInput
-                    newMessageText={props.state.newMessageText}
-                    dispatch = {props.dispatch}
+                <Messages messagesData={messagesData} />
+                <MessageInputContainer
+                    store={props.store}
                 />
             </div>
         </div>
