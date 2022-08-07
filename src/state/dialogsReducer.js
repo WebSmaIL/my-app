@@ -1,7 +1,21 @@
 const ADD_MESSAGE = "ADD-MESSAGE",
         CHANGE_MESSAGE = "CHANGE-MESSAGE";
 
-export const dialogsReducer = (state, action) => {
+let initialState = {
+    newMessageText : "",
+    messagesData : [
+        { id: 1, message: "Hi, bro, how are you?" },
+        { id: 2, message: "i`m good, thanks!" },
+    ],
+    dialogsData : [
+        { id: "1", userName: "Василий" },
+        { id: "2", userName: "Вероника" },
+        { id: "3", userName: "Витя" },
+        { id: "4", userName: "Даня" },
+        { id: "5", userName: "Максим" },
+    ],
+};
+const dialogsReducer = (state = initialState, action) => {
     switch(action.type){
 
         // ADD-MESSAGE CASE

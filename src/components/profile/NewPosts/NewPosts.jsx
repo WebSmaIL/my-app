@@ -4,7 +4,6 @@ import Post from "./post/Post";
 
 const NewPosts = (props) => {
     
-
     let postsItems = props.postsData.map((p) => (
         <Post
             message={p.message}
