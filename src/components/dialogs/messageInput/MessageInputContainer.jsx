@@ -1,30 +1,28 @@
-import React from "react";
 import {
     addMesActionCreator,
     changeMesActionCreator,
 } from "../../../state/dialogsReducer";
 import MessageInput from "./MessageInput";
+import { connect } from "react-redux/es/exports";
 
-const MessageInputContainer = (props) => {
-    let newMessageText = props.store.getState().dialogs.newMessageText;
-    
-    let addMessage = () => {
-        let action = addMesActionCreator();
-        props.store.dispatch(action);
+
+let mapStateToProps = (state) => {
+    return {
+        newMessageText : state.dialogs.newMessageText
     };
-
-    let updateMessageText = (text) => {
-        let action = changeMesActionCreator(text);
-        props.store.dispatch(action);
+}
+let mapDispatchToProps = (dispatch) => {
+    return {
+        updateMessageText : (text) => {
+            let action = changeMesActionCreator(text);
+            dispatch(action);
+        },
+        addMessage : () => {
+            let action = addMesActionCreator();
+            dispatch(action);
+        }
     };
-
-    return (
-        <MessageInput
-            addMessage={addMessage}
-            updateMessageText={updateMessageText}
-            newMessageText={newMessageText}
-        />
-    );
-};
+}
+const MessageInputContainer = connect(mapStateToProps, mapDispatchToProps)(MessageInput);
 
 export default MessageInputContainer;

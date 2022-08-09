@@ -5,10 +5,7 @@ import Messages from "./Messages/Messages";
 import MessageInputContainer from "./messageInput/MessageInputContainer";
 
 const Dialogs = (props) => {
-    let dialogsData = props.store.getState().dialogs.dialogsData;
-    let messagesData = props.store.getState().dialogs.messagesData;
-    
-    let dialogsElements = dialogsData.map((dialogItem) => (
+    let dialogsElements = props.dialogsData.map((dialogItem) => (
         <DialogItem id={dialogItem.id} userName={dialogItem.userName} />
     ));
 
@@ -17,10 +14,8 @@ const Dialogs = (props) => {
             <div className={s.dialogItems}>{dialogsElements}</div>
 
             <div className={s.dialogWindow}>
-                <Messages messagesData={messagesData} />
-                <MessageInputContainer
-                    store={props.store}
-                />
+                <Messages messagesData={props.messagesData} />
+                <MessageInputContainer />
             </div>
         </div>
     );

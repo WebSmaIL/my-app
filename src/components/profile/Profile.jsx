@@ -1,6 +1,6 @@
 import React from "react";
-import MyPostsContainer from "./CreatePosts/CreatePostsContainer";
-import NewPosts from "./NewPosts/NewPosts";
+import CreatePostsContainer from "./CreatePosts/CreatePostsContainer";
+import NewPostsContainer from "./NewPosts/NewPostsContainer"
 import s from "./Profile.module.css";
 import ProfileInfo from "./profileInfo/profileInfo";
 
@@ -18,13 +18,12 @@ const Profile = (props) => {
                 <ProfileInfo />
             </div>
 
-            <MyPostsContainer
-                store = {props.store}
-            />
+            <CreatePostsContainer />
 
-            <NewPosts postsData={props.store.getState().profile.postsData} />
+            <NewPostsContainer />
         </main>
     );
 };
 
 export default Profile;
+

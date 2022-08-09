@@ -2,7 +2,7 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
-import Dialogs from "./components/dialogs/Dialogs";
+import DialogsContainer from "./components/dialogs/DialogsContainer";
 import Header from "./components/header/Header";
 import Music from "./components/music/Music";
 import Nav from "./components/navbar/Nav";
@@ -21,19 +21,13 @@ const App = (props) => {
                         <Route
                             path="/"
                             element={
-                                <Profile
-                                    store={props.store}
-                                />
+                                <Profile />
                             }
                         />
                         <Route
                             path="/dialogs/*"
                             element={
-                                <Dialogs
-                                    store={props.store}
-                                    // state={props.store.getState().dialogs}
-                                    // dispatch = {props.store.dispatch.bind(props.store)}
-                                />
+                                <DialogsContainer />
                             }
                         />
                         <Route path="/news/*" element={<News />} />
