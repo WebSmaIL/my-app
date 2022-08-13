@@ -13,3 +13,21 @@
   display: block;
   grid-area: main;
 }
+
+.dialogUserLink {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+
+  transition: all 0.2s ease;
+}
+
+.dialogUserLink.active {
+  color: red;
+  transform: translateX(-15px);
+}
+
+.dialogUserLink:hover {
+  transform: translateX(-15px);
+}
