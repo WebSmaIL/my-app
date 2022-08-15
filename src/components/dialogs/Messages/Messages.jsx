@@ -5,7 +5,7 @@ import s from "./Messages.module.css";
 const Messages = (props) => {
     
     let messagesItems = props.messagesData.map((messageItem) => (
-        <MessageItem messageText={messageItem.message} />
+        <MessageItem key={messageItem.id} messageText={messageItem.message} />
     ));
 
     return (
