@@ -1,13 +1,12 @@
-import React  from 'react';
-import s from './Users.module.css';
+import React from "react";
+import s from "./Users.module.css";
 
 const Users = (props) => {
-    debugger;
     if (props.usersList.length === 0) {
         props.setUsers([
             {
                 id: 1,
-                url:"https://coolsen.ru/wp-content/uploads/2021/06/15-8.jpg",
+                url: "https://coolsen.ru/wp-content/uploads/2021/06/15-8.jpg",
                 userName: "Jack N.",
                 userStatus: "I`m a boss",
                 location: {
@@ -18,7 +17,7 @@ const Users = (props) => {
             },
             {
                 id: 2,
-                url:"https://coolsen.ru/wp-content/uploads/2021/06/15-8.jpg",
+                url: "https://pixelbox.ru/wp-content/uploads/2021/03/ava-instagram-1.jpeg",
                 userName: "Amin K.",
                 userStatus: "I`m a boss too",
                 location: {
@@ -29,7 +28,7 @@ const Users = (props) => {
             },
             {
                 id: 3,
-                url:"https://coolsen.ru/wp-content/uploads/2021/06/15-8.jpg",
+                url: "https://pixelbox.ru/wp-content/uploads/2021/02/mult-ava-instagram-2.jpg",
                 userName: "Veronica G.",
                 userStatus: "and me too",
                 location: {
@@ -37,39 +36,57 @@ const Users = (props) => {
                     city: "Omsk",
                 },
                 followed: false,
-            }])
+            },
+        ]);
     }
     return (
         <div>
-            {
-                props.usersList.map( user => {
-                    return(
-                        <div key={user.id}>
-                            <span>
-                                <div>
-                                    <img width="50" height="50" src={user.url} alt="" />
-                                </div>
-                                <div>
-                                    {
-                                    user.followed ? <button onClick={()=>{props.unfollow(user.id)}}>UNFOLLOW</button> 
-                                    : 
-                                    <button onClick={()=>{props.follow(user.id)}}>FOLLOW</button>}
-                                </div>
-                            </span>
-                            <span>
-                                <div>{user.userName}</div>
-                                <div>{user.userStatus}</div>
-                            </span>
-                            <span>
-                                <div>{user.location.country}</div>
-                                <div>{user.location.city}</div>
-                            </span>
+            {props.usersList.map((user) => {
+                return (
+                    <div className={s.userItem} key={user.id}>
+                        <div className={s.userFlex}>
+                            <div>
+                                <img
+                                    className={s.userAvatar}
+                                    src={user.url}
+                                    alt=""
+                                />
+                            </div>
+                            <div>
+                                {user.followed ? (
+                                    <button
+                                        className={s.followBtn}
+                                        onClick={() => {
+                                            props.unfollow(user.id);
+                                        }}
+                                    >
+                                        UNFOLLOW
+                                    </button>
+                                ) : (
+                                    <button
+                                        className={s.followBtn}
+                                        onClick={() => {
+                                            props.follow(user.id);
+                                        }}
+                                    >
+                                        FOLLOW
+                                    </button>
+                                )}
+                            </div>
                         </div>
-                    )
-                })
-            }
+                        <div className={s.userInfo}>
+                            <span>{user.userName}</span>
+                            <span>{user.userStatus}</span>
+                        </div>
+                        <div className={s.userLocation}>
+                            <span>{user.location.country}</span>
+                            <span>{user.location.city}</span>
+                        </div>
+                    </div>
+                );
+            })}
         </div>
-    )
-}
+    );
+};
 
 export default Users;

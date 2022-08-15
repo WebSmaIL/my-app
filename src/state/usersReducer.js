@@ -1,5 +1,3 @@
-
-
 const FOLLOW = "FOLLOW",
     UNFOLLOW = "UNFOLLOW",
     SET_USERS = "SET_USERS";
@@ -39,7 +37,7 @@ const usersReducer = (state = initialState, action) => {
         
         case SET_USERS: {
             return {
-                ...state, usersList:[...state.usersList, ...action.users]
+                ...state, usersList:[ ...action.users]
             }
         }
         default:
