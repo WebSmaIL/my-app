@@ -9,6 +9,7 @@ import Nav from "./components/navbar/Nav";
 import News from "./components/news/News";
 import Profile from "./components/profile/Profile";
 import Settings from "./components/settings/Settings";
+import UsersContainer from "./components/users/usersContainer";
 
 const App = (props) => {
     return (
@@ -32,6 +33,7 @@ const App = (props) => {
                         />
                         <Route path="/news/*" element={<News />} />
                         <Route path="/music/*" element={<Music />} />
+                        <Route path="/users/*" element={<UsersContainer />} />
                         <Route path="/settings/*" element={<Settings />} />
                     </Routes>
                 </div>
