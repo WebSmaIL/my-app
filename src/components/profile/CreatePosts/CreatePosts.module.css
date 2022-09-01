@@ -35,7 +35,7 @@
   border: none;
   cursor: pointer;
   outline: none;
-  background: rgb(46, 164, 237);
+  background: #00acba;
 
   font-size: 15px;
   color: #fff;
@@ -44,5 +44,5 @@
 }
 
 .myPosts button:hover {
-  background: rgb(37, 132, 192);
+  background: #0094a2;
 }

@@ -18,7 +18,7 @@
 .followBtn {
     width: 100px;
     padding: 5px 0;
-    background: rgb(37, 97, 209);
+    background: #00acba ;
     color: whitesmoke;
     outline: none;
     border: none;
@@ -31,7 +31,7 @@
 }
 
 .followBtn:hover {
-    background: rgb(23, 64, 141);
+    background: #00acba;
 }
 .userInfo {
     display: flex;
@@ -61,4 +61,30 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.429);
     color: rgb(73, 73, 73);
     font-size: 18px;
+}
+.paginateBlock {
+    width: fit-content;
+    margin: 10px auto;
+}
+
+.paginateBtn {
+    width: 50px;
+    height: 50px;
+    font-size: 16px;
+    background: #fff;
+    border: 2px solid #00acba ;
+    text-align: center;
+    outline: none;
+    margin: 2.5px;
+    transition: all .2s ease-in-out;
+    cursor: pointer;
+}
+.currentPage {
+    font-weight: bold;
+    background: #00acba ;
+    color: #fff;
+}
+.paginateBtn:not(.currentPage):hover {
+    background: #00acba ;
+    color: #fff;
 }

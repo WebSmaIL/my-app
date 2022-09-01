@@ -24,7 +24,7 @@
 }
 
 .dialogUserLink.active {
-  color: red;
+  color: #00acba;
   transform: translateX(-15px);
 }
 
