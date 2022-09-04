@@ -1,60 +1,16 @@
-import axios from "axios";
 import React from "react";
 import s from "./Users.module.css";
 
-const Users = (props) => {
-    let getUsers = () => {
-        if (props.usersList.length === 0) {
-            axios
-                .get("https://social-network.samuraijs.com/api/1.0/users")
-                .then((res) => {
-                    // debugger
-                    props.setUsers(res.data.items);
-                });
-            // props.setUsers([
-            //     {
-            //         id: 1,
-            //         url: "https://coolsen.ru/wp-content/uploads/2021/06/15-8.jpg",
-            //         userName: "Jack N.",
-            //         userStatus: "I`m a boss",
-            //         location: {
-            //             country: "USA",
-            //             city: "New-York",
-            //         },
-            //         followed: true,
-            //     },
-            //     {
-            //         id: 2,
-            //         url: "https://pixelbox.ru/wp-content/uploads/2021/03/ava-instagram-1.jpeg",
-            //         userName: "Amin K.",
-            //         userStatus: "I`m a boss too",
-            //         location: {
-            //             country: "Iran",
-            //             city: "IranCity",
-            //         },
-            //         followed: false,
-            //     },
-            //     {
-            //         id: 3,
-            //         url: "https://pixelbox.ru/wp-content/uploads/2021/02/mult-ava-instagram-2.jpg",
-            //         userName: "Veronica G.",
-            //         userStatus: "and me too",
-            //         location: {
-            //             country: "Russia",
-            //             city: "Omsk",
-            //         },
-            //         followed: false,
-            //     },
-            // ]);
-        }
-    };
 
+const Users = (props) => {
     
+    let pagesCount = Math.ceil(props.totalCount / props.pageSize);
+        let pagesArr = [];
+        for (let i = 1; i <= pagesCount; i++) {
+            pagesArr.push(i);
+    }
     return (
         <div>
-            <div>
-                <span>1</span>
-            </div>
             {props.usersList.map((user) => {
                 return (
                     <div className={s.userItem} key={user.id}>
@@ -104,13 +60,35 @@ const Users = (props) => {
                                 </i>
                             </span>
                         </div>
-                        {/* <div className={s.userLocation}>
-                            <span>{user.location.country}</span>
-                            <span>{user.location.city}</span>
-                        </div> */}
                     </div>
                 );
             })}
+            <div className={s.paginateBlock}>
+                {pagesArr.map((el) => {
+                    if (
+                        el === 1 ||
+                        (el <= 4 && props.currentPage <= 3) ||
+                        (el >= pagesCount - 3 &&
+                            props.currentPage >= pagesCount - 2) ||
+                        el === pagesCount ||
+                        (el >= props.currentPage - 1 &&
+                            el <= props.currentPage + 1)
+                    ) {
+                        return (
+                            <button
+                                className={`${s.paginateBtn} ${
+                                    props.currentPage === el
+                                        ? s.currentPage
+                                        : ""
+                                }`}
+                                onClick={() => {props.onPageChanged(el)}}
+                            >
+                                {el}
+                            </button>
+                        );
+                    }
+                })}
+            </div>
         </div>
     );
 };
