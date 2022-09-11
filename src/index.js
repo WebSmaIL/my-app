@@ -19,7 +19,7 @@ export let renderEntireTree = () => {
         </React.StrictMode>
     );
 }
-
+window.store = store;
 
 renderEntireTree(store.getState());
 

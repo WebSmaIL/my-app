@@ -7,7 +7,7 @@ import Header from "./components/header/Header";
 import Music from "./components/music/Music";
 import Nav from "./components/navbar/Nav";
 import News from "./components/news/News";
-import Profile from "./components/profile/Profile";
+import ProfileContainer from "./components/profile/profileContainer";
 import Settings from "./components/settings/Settings";
 import UsersContainer from "./components/users/usersContainer";
 
@@ -20,9 +20,9 @@ const App = (props) => {
                 <div className="wrapperContent">
                     <Routes>
                         <Route
-                            path="/"
+                            path="/profile/*"
                             element={
-                                <Profile />
+                                <ProfileContainer />
                             }
                         />
                         <Route

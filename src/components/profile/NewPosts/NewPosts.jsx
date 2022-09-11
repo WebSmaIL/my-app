@@ -9,6 +9,7 @@ const NewPosts = (props) => {
             message={p.message}
             avatarURL={p.avatarURL}
             likeCount={p.likeCount}
+            key={p.id}
         />
     ));
 
