@@ -15,7 +15,7 @@
     border-radius: 50%;
     box-shadow: 0 0 5px #000;
 }
-.followBtn {
+.followBtn, .unfollowBtn {
     width: 100px;
     padding: 5px 0;
     background: #00acba ;
@@ -30,8 +30,16 @@
     cursor: pointer;
 }
 
+.unfollowBtn {
+    background: red;
+}
+
+.unfollowBtn:hover {
+    background: rgb(173, 0, 0);
+}
+
 .followBtn:hover {
-    background: #00acba;
+    background: #018895;
 }
 .userInfo {
     display: flex;

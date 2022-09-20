@@ -1,6 +1,8 @@
 import React from "react";
 import s from "./Users.module.css";
 import { NavLink } from "react-router-dom";
+import axios from "axios";
+import { UsersAPI } from "../../api/api";
 
 const Users = (props) => {
     let pagesCount = Math.ceil(props.totalCount / props.pageSize);
@@ -8,6 +10,7 @@ const Users = (props) => {
     for (let i = 1; i <= pagesCount; i++) {
         pagesArr.push(i);
     }
+
     return (
         <div>
             {props.usersList.map((user) => {
@@ -30,9 +33,15 @@ const Users = (props) => {
                             <div>
                                 {user.followed ? (
                                     <button
-                                        className={s.followBtn}
+                                        className={s.unfollowBtn}
                                         onClick={() => {
-                                            props.unfollow(user.id);
+                                            UsersAPI.unfollowUser(user.id).then(
+                                                (res) => {
+                                                    if (res.resultCode == 0) {
+                                                        props.unfollow(user.id);
+                                                    }
+                                                }
+                                            );
                                         }}
                                     >
                                         UNFOLLOW
@@ -41,7 +50,13 @@ const Users = (props) => {
                                     <button
                                         className={s.followBtn}
                                         onClick={() => {
-                                            props.follow(user.id);
+                                            UsersAPI.followUser(user.id).then(
+                                                (res) => {
+                                                    if (res.resultCode == 0) {
+                                                        props.follow(user.id);
+                                                    }
+                                                }
+                                            );
                                         }}
                                     >
                                         FOLLOW
