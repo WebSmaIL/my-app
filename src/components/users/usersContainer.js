@@ -6,9 +6,8 @@ import {
     setIsFetching,
     setTotalCount,
     setUsers,
-    unfollow,
+    unfollow
 } from "../../state/usersReducer";
-// import axios from "axios";
 import Users from "./Users";
 import Preloader from "../common/preloader/preloader";
 import { UsersAPI } from "../../api/api";
@@ -54,7 +53,7 @@ let mapStateToProps = (state) => {
         pageSize: state.usersPage.pageSize,
         totalCount: state.usersPage.totalCount,
         currentPage: state.usersPage.currentPage,
-        isFetching: state.usersPage.isFetching,
+        isFetching: state.usersPage.isFetching
     };
 };
 
@@ -64,5 +63,5 @@ export default connect(mapStateToProps, {
     setUsers,
     setCurPage,
     setTotalCount,
-    setIsFetching,
+    setIsFetching
 })(UsersContainer);

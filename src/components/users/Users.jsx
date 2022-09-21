@@ -1,7 +1,6 @@
 import React from "react";
 import s from "./Users.module.css";
 import { NavLink } from "react-router-dom";
-import axios from "axios";
 import { UsersAPI } from "../../api/api";
 
 const Users = (props) => {
@@ -37,14 +36,14 @@ const Users = (props) => {
                                         onClick={() => {
                                             UsersAPI.unfollowUser(user.id).then(
                                                 (res) => {
-                                                    if (res.resultCode == 0) {
+                                                    if (res.resultCode === 0) {
                                                         props.unfollow(user.id);
                                                     }
                                                 }
                                             );
                                         }}
                                     >
-                                        UNFOLLOW
+                                        <span>UNFOLLOW</span>
                                     </button>
                                 ) : (
                                     <button
@@ -52,14 +51,13 @@ const Users = (props) => {
                                         onClick={() => {
                                             UsersAPI.followUser(user.id).then(
                                                 (res) => {
-                                                    if (res.resultCode == 0) {
+                                                    if (res.resultCode === 0) {
                                                         props.follow(user.id);
                                                     }
                                                 }
                                             );
                                         }}
-                                    >
-                                        FOLLOW
+                                    ><span>FOLLOW</span>
                                     </button>
                                 )}
                             </div>

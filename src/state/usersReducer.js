@@ -10,57 +10,61 @@ let initialState = {
     pageSize: 5,
     totalCount: 0,
     currentPage: 1,
-    isFetching: false
+    isFetching: false,
 };
 const usersReducer = (state = initialState, action) => {
     switch (action.type) {
         case FOLLOW:
             return {
                 ...state,
-                usersList: state.usersList.map((user)=>{
-                    if(user.id === action.userID) {
+                usersList: state.usersList.map((user) => {
+                    if (user.id === action.userID) {
                         return {
                             ...user,
-                            followed : true
-                        }
+                            followed: true,
+                        };
                     }
                     return user;
-                })
+                }),
             };
 
         case UNFOLLOW:
             return {
                 ...state,
-                usersList: state.usersList.map((user)=>{
-                    if(user.id === action.userID) {
+                usersList: state.usersList.map((user) => {
+                    if (user.id === action.userID) {
                         return {
                             ...user,
-                            followed : false
-                        }
+                            followed: false,
+                        };
                     }
                     return user;
-                })
+                }),
             };
-        
+
         case SET_USERS: {
             return {
-                ...state, usersList:[ ...action.users]
-            }
+                ...state,
+                usersList: [...action.users],
+            };
         }
         case SET_CUR_PAGE: {
             return {
-                ...state, currentPage: action.currentPage
-            }
+                ...state,
+                currentPage: action.currentPage,
+            };
         }
         case SET_TOTAL_COUNT: {
             return {
-                ...state, totalCount: action.count
-            }
+                ...state,
+                totalCount: action.count,
+            };
         }
         case TOGGLE_IS_FETCHING: {
             return {
-                ...state, isFetching: action.isFetching
-            }
+                ...state,
+                isFetching: action.isFetching,
+            };
         }
         default:
             return state;
@@ -84,27 +88,25 @@ export const unfollow = (id) => {
 export const setUsers = (users) => {
     return {
         type: SET_USERS,
-        users: users
+        users: users,
     };
 };
 export const setCurPage = (currentPage) => {
     return {
         type: SET_CUR_PAGE,
-        currentPage: currentPage
+        currentPage: currentPage,
     };
 };
 export const setTotalCount = (count) => {
     return {
         type: SET_TOTAL_COUNT,
-        count: count
+        count: count,
     };
 };
 export const setIsFetching = (isFetching) => {
     return {
         type: TOGGLE_IS_FETCHING,
-        isFetching: isFetching
+        isFetching: isFetching,
     };
 };
-
-
 export default usersReducer;
