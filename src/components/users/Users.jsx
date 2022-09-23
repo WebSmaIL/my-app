@@ -32,32 +32,23 @@ const Users = (props) => {
                             <div>
                                 {user.followed ? (
                                     <button
+                                        disabled={props.followingInProgress.some(
+                                            (id) => id === user.id
+                                        )}
                                         className={s.unfollowBtn}
-                                        onClick={() => {
-                                            UsersAPI.unfollowUser(user.id).then(
-                                                (res) => {
-                                                    if (res.resultCode === 0) {
-                                                        props.unfollow(user.id);
-                                                    }
-                                                }
-                                            );
-                                        }}
+                                        onClick={() => props.unfollowUserTC(user.id)}
                                     >
                                         <span>UNFOLLOW</span>
                                     </button>
                                 ) : (
                                     <button
+                                        disabled={props.followingInProgress.some(
+                                            (id) => id === user.id
+                                        )}
                                         className={s.followBtn}
-                                        onClick={() => {
-                                            UsersAPI.followUser(user.id).then(
-                                                (res) => {
-                                                    if (res.resultCode === 0) {
-                                                        props.follow(user.id);
-                                                    }
-                                                }
-                                            );
-                                        }}
-                                    ><span>FOLLOW</span>
+                                        onClick={() => props.followUserTC(user.id)}
+                                    >
+                                        <span>FOLLOW</span>
                                     </button>
                                 )}
                             </div>
@@ -96,9 +87,7 @@ const Users = (props) => {
                                         ? s.currentPage
                                         : ""
                                 }`}
-                                onClick={() => {
-                                    props.onPageChanged(el);
-                                }}
+                                onClick={() => props.onPageChanged(el)}
                             >
                                 {el}
                             </button>

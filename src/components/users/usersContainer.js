@@ -1,34 +1,25 @@
 import React from "react";
 import { connect } from "react-redux/es/exports";
 import {
-    follow,
     setCurPage,
-    setIsFetching,
-    setTotalCount,
-    setUsers,
-    unfollow
+    getUsersThunkCreator,
+    unfollowUserTC,
+    followUserTC,
 } from "../../state/usersReducer";
 import Users from "./Users";
 import Preloader from "../common/preloader/preloader";
-import { UsersAPI } from "../../api/api";
 
 class UsersContainer extends React.Component {
     componentDidMount() {
-        this.props.setIsFetching(true);
-        UsersAPI.getUsers(this.props.currentPage, this.props.pageSize).then((res) => {
-            this.props.setUsers(res.items);
-            this.props.setTotalCount(res.totalCount);
-            this.props.setIsFetching(false);
-        });
+        this.props.getUsersThunkCreator(
+            this.props.currentPage,
+            this.props.pageSize
+        );
     }
 
     onPageChanged(p) {
-        this.props.setIsFetching(true);
+        this.props.getUsersThunkCreator(p, this.props.pageSize);
         this.props.setCurPage(p);
-        UsersAPI.getUsers(p, this.props.pageSize).then((res) => {
-                this.props.setUsers(res.items);
-                this.props.setIsFetching(false);
-            });
     }
 
     render() {
@@ -53,15 +44,14 @@ let mapStateToProps = (state) => {
         pageSize: state.usersPage.pageSize,
         totalCount: state.usersPage.totalCount,
         currentPage: state.usersPage.currentPage,
-        isFetching: state.usersPage.isFetching
+        isFetching: state.usersPage.isFetching,
+        followingInProgress: state.usersPage.followingInProgress,
     };
 };
 
 export default connect(mapStateToProps, {
-    follow,
-    unfollow,
-    setUsers,
     setCurPage,
-    setTotalCount,
-    setIsFetching
+    getUsersThunkCreator,
+    unfollowUserTC,
+    followUserTC,
 })(UsersContainer);
