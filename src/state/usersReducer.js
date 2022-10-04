@@ -76,7 +76,7 @@ const usersReducer = (state = initialState, action) => {
                 followingInProgress: action.isFetching
                     ? [...state.followingInProgress, action.userId]
                     : state.followingInProgress.filter(
-                          (id) => id != action.userId
+                          (id) => id !== action.userId
                       ),
             };
         }
@@ -166,5 +166,7 @@ export const followUserTC = (id) => {
         });
     };
 };
+
+
 
 export default usersReducer;

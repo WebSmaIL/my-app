@@ -5,6 +5,7 @@ import "./App.css";
 import DialogsContainer from "./components/dialogs/DialogsContainer";
 // import Header from "./components/header/Header";
 import HeaderContainer from "./components/header/headerContainer";
+import Login from "./components/login/login";
 import Music from "./components/music/Music";
 import Nav from "./components/navbar/Nav";
 import News from "./components/news/News";
@@ -42,6 +43,7 @@ const App = (props) => {
                         <Route path="/music/*" element={<Music />} />
                         <Route path="/users/*" element={<UsersContainer />} />
                         <Route path="/settings/*" element={<Settings />} />
+                        <Route path="/login/*" element={<Login />} />
                     </Routes>
                 </div>
             </div>

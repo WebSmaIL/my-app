@@ -1,32 +1,23 @@
 import React from "react";
 import Profile from "./Profile";
-import axios from "axios";
-import { setUserProfile } from "../../state/profileReducer";
+import { getUserProfileTC } from "../../state/profileReducer";
 import { connect } from "react-redux/es/exports";
 import {
     useLocation,
     useNavigate,
-    useParams,
+    useParams
 } from "react-router-dom";
+import { WithAuthRedirect } from "../HOC/WithAuthRedirect";
 
 class ProfileContainer extends React.Component {
     componentDidMount(){
-
         let userId = (this.props.router.params["userId"]) ? this.props.router.params["userId"] : 2;
-        
-        axios
-            .get(
-                `https://social-network.samuraijs.com/api/1.0/profile/${userId}`
-            )
-            .then((res) => {
-                this.props.setUserProfile(res.data);
-            });
+        this.props.getUserProfileTC(userId);
     }
 
     render(){
-        return <Profile {...this.props}/>
+       return <Profile {...this.props}/>;
     }
-
 }
 
 let mapStateToProps = (state) => {
@@ -50,5 +41,7 @@ function withRouter(Component) {
     return ComponentWithRouterProp;
 }
 
-export default connect(mapStateToProps, { setUserProfile })(withRouter(ProfileContainer));
+// Create HOC
+let redirectComponent = WithAuthRedirect(ProfileContainer);
 
+export default connect(mapStateToProps, { getUserProfileTC })(withRouter(redirectComponent));

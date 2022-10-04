@@ -8,6 +8,7 @@ import {
 } from "../../state/usersReducer";
 import Users from "./Users";
 import Preloader from "../common/preloader/preloader";
+import {WithAuthRedirect} from "../HOC/WithAuthRedirect"
 
 class UsersContainer extends React.Component {
     componentDidMount() {
@@ -49,9 +50,11 @@ let mapStateToProps = (state) => {
     };
 };
 
+let redirectComponent = WithAuthRedirect(UsersContainer)
+
 export default connect(mapStateToProps, {
     setCurPage,
     getUsersThunkCreator,
     unfollowUserTC,
     followUserTC,
-})(UsersContainer);
+})(redirectComponent);
