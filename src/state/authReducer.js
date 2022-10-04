@@ -42,5 +42,4 @@ export const getUserDataTC = () => {
         });
     };
 };
-console.log("это я пишу с ноута");
 export default authReducer;

@@ -1,6 +1,7 @@
 import { connect } from "react-redux/es/exports";
 import Dialogs from "./Dialogs";
 import { WithAuthRedirect } from "../HOC/WithAuthRedirect";
+import { compose } from "redux";
 
 let mapStateToProps = (state) => {
     return {
@@ -9,8 +10,7 @@ let mapStateToProps = (state) => {
     };
 }
 
-// Create HOC
-let redirectComponent = WithAuthRedirect(Dialogs);
-
-const DialogsContainer = connect(mapStateToProps, {})(redirectComponent);
-export default DialogsContainer;
+export default compose(
+    connect(mapStateToProps, {}),
+    WithAuthRedirect
+)(Dialogs)

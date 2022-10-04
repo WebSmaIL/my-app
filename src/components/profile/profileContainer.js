@@ -8,6 +8,7 @@ import {
     useParams
 } from "react-router-dom";
 import { WithAuthRedirect } from "../HOC/WithAuthRedirect";
+import { compose } from "redux";
 
 class ProfileContainer extends React.Component {
     componentDidMount(){
@@ -41,7 +42,8 @@ function withRouter(Component) {
     return ComponentWithRouterProp;
 }
 
-// Create HOC
-let redirectComponent = WithAuthRedirect(ProfileContainer);
-
-export default connect(mapStateToProps, { getUserProfileTC })(withRouter(redirectComponent));
+export default compose(
+    connect(mapStateToProps, { getUserProfileTC }),
+    withRouter,
+    WithAuthRedirect
+)(ProfileContainer)
