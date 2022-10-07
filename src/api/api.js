@@ -21,7 +21,20 @@ export const UsersAPI = {
         return res.data;
     },
     getProfile: (userId) => {
+        console.warn("Please use a ProfileAPI for this request");
+        return ProfileAPI.getProfile(userId);
+    },
+};
+
+export const ProfileAPI = {
+    getProfile: (userId) => {
         return instance.get(`profile/${userId}`);
+    },
+    getStatus: (userId) => {
+        return instance.get(`profile/status/${userId}`);
+    },
+    updateStatus: (status) => {
+        return instance.put(`profile/status/`, {status}); // interpretative status: status
     },
 };
 

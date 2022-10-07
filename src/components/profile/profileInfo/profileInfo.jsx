@@ -1,12 +1,13 @@
 import React  from 'react';
 import Preloader from '../../common/preloader/preloader';
 import s from "./profileInfo.module.css";
+import ProfileStatus from './profileStatus/ProfileStatus';
 
 const ProfileInfo = (props) => {
   if (!props.profile) {
     return <Preloader/>;
   }
-  // debugger
+  
     return (
         <div className={s.profileInfo}>
           <img
@@ -15,6 +16,7 @@ const ProfileInfo = (props) => {
             alt=""
           />
           <div className={s.profileAbout}>
+            <ProfileStatus status={props.status}/>
             <h1>{props.profile.fullName}</h1>
 
             <p>{props.profile.aboutMe}</p>

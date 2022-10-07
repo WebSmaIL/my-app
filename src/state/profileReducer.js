@@ -1,8 +1,9 @@
-import {UsersAPI} from "../api/api";
+import {ProfileAPI, UsersAPI} from "../api/api";
 
 const ADD_POST = "ADD-POST",
         CHANGE_POST = "CHANGE-POST",
-        SET_USER_PROFILE = "SET_USER_PROFILE";
+        SET_USER_PROFILE = "SET_USER_PROFILE",
+        SET_STATUS = "SET_STATUS";
 
 let initialState = {
     newPostText : "",
@@ -37,7 +38,8 @@ let initialState = {
             likeCount: "101",
         },
     ],
-    profile : null
+    profile : null,
+    status: null
 }
 
 const profileReducer = (state = initialState, action) => {
@@ -69,6 +71,13 @@ const profileReducer = (state = initialState, action) => {
                 profile : action.profile
             };
         }
+
+        case SET_STATUS:{
+            return {
+                ...state,
+                status : action.status
+            };
+        }
         default:
             return state;
     }
@@ -91,6 +100,32 @@ export const setUserProfile = (profile) => {
     return {
         type : SET_USER_PROFILE,
         profile
+    }
+};
+
+export const setStatusAC = (status) => {
+    return {
+        type : SET_STATUS,
+        status
+    }
+};
+
+export const getStatusTC = (uid) => {
+    return (dispatch) => {
+        
+        ProfileAPI.getStatus(uid).then(res => {
+            dispatch(setStatusAC(res.data));
+        })
+    }
+};
+
+export const updateStatusTC = (status) => {
+    return (dispatch) => {
+        ProfileAPI.updateStatus(status).then(res => {
+            if (res.data.resultCode === 0) {
+                dispatch(setStatusAC(status));
+            }
+        })
     }
 };
 
