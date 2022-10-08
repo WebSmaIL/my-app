@@ -14,7 +14,7 @@ const Profile = (props) => {
                     alt=""
                 />
 
-                <ProfileInfo profile={props.profile} status={props.status} updateStatus={props.updateStatusTC}/>
+                <ProfileInfo {...props}/>
             </div>
 
             <CreatePostsContainer />
@@ -26,3 +26,4 @@ const Profile = (props) => {
 
 export default Profile;
 
+// profile={props.profile} status={props.status} updateStatus={props.updateStatus}

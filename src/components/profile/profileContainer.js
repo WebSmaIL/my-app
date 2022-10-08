@@ -12,13 +12,13 @@ import { compose } from "redux";
 
 class ProfileContainer extends React.Component {
     componentDidMount(){
-        let userId = (this.props.router.params["userId"]) ? this.props.router.params["userId"] : 2;
+        let userId = (this.props.router.params["userId"]) ? this.props.router.params["userId"] : 25976;
         this.props.getUserProfileTC(userId);
         this.props.getStatusTC(userId);
     }
 
     render(){
-       return <Profile {...this.props}/>;
+       return <Profile {...this.props} updateStatus={this.props.updateStatusTC}/>;
     }
 }
 
