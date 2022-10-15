@@ -1,4 +1,5 @@
 import React from "react";
+import { StyledInput } from "./profileStatus_styles";
 
 class ProfileStatus extends React.Component {
     state = {
@@ -30,7 +31,7 @@ class ProfileStatus extends React.Component {
                 {
                 this.state.editMode ? 
                     <div>
-                        <input onChange={this.onStatusChange} autoFocus={true} onBlur={this.deactivateEditMode} value={this.state.status} />
+                        <StyledInput onChange={this.onStatusChange} autoFocus={true} onBlur={this.deactivateEditMode} value={this.state.status} />
                     </div>
                     :
                     <div>
